@@ -1,0 +1,40 @@
+
+<!-- Topics Start -->
+        <div class="topics">
+          <div class="topics__header">
+            <h2>Browse Topics</h2>
+          </div>
+          <ul class="topics__list">
+            <li>
+              <a href="{% url 'create-topic' %}" class="active">Create topic </a>
+            </li>
+            <li>
+              <a href="/" class="active">All <span>{{ all }}</span></a>
+            </li>
+            {% for i in topics %}
+
+            <li>
+              <a href="{% url 'home' %}?search={{ i.name }}">{{ i.name }} <span>{{ i.room__count }}</span></a>
+            </li>
+              {% endfor %}
+          </ul>
+            {% if request.GET.more %}
+                <a class="btn btn--link" href="{% url 'home' %}">
+            More
+            <svg version="1.1" style="transform: rotateZ(180deg)" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+              <title>chevron-down</title>
+              <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>
+            </svg>
+            </a>
+              {% else %}
+                <a class="btn btn--link" href="{% url 'home' %}?more=True">
+                More
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                     width="32" height="32" viewBox="0 0 32 32">
+                <title>chevron-down</title>
+                <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>
+                </svg>
+                </a>
+        {% endif %}
+        </div>
+        <!-- Topics End -->

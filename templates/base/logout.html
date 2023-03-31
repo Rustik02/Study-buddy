@@ -1,0 +1,12 @@
+{% extends 'base/main.html'%}
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>{{ error }}</p>
+        {{ form.as_p }}
+        <input type="submit" value="Logout">
+    </form>
+
+{% endblock content %}
